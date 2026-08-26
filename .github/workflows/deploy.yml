@@ -34,13 +34,7 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Check build output
-        run: |
-          echo "=== DIST CONTENTS ==="
-          find dist -maxdepth 2 -type f -print
-          echo "=== INDEX FILE ==="
-          ls -lah dist
-
+    
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
