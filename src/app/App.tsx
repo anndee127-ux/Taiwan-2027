@@ -181,45 +181,72 @@ const HOTELS = [
     nights: 2, days: "Days 1–2",
     name: "Fuli Hot Spring Resort", nameZh: "馥麗溫泉大飯店",
     location: "Sun Moon Lake, Nantou County",
-    address: "No. 21, Zhongzheng Rd, Yuchi Township, Nantou County",
     checkIn: "15:00", checkOut: "11:00",
     parking: "Included — hotel lot",
     features: ["Private hot spring baths", "Lakefront views", "Restaurant on-site", "Spa & wellness"],
+    breakfast: null,
     localImage: imgFuliHotel,
-    navDest: "Fuli Hot Spring Resort, Sun Moon Lake, Taiwan",
+    mapsUrl: "https://maps.app.goo.gl/RKTw8NdizpYq4aLC6",
   },
   {
     nights: 2, days: "Days 3–4",
     name: "Dafeng Hotel", nameZh: "大豐山莊",
     location: "Alishan National Park, Chiayi County",
-    address: "Alishan Township, Chiayi County (inside the national park)",
     checkIn: "14:00", checkOut: "10:00",
     parking: "Limited — inside park",
-    features: ["Inside Alishan National Park", "Walking distance to forest trains", "Mountain views", "Early sunrise access"],
+    features: ["Inside Alishan National Park", "Walking distance to forest trains", "Mountain views"],
+    breakfast: "Breakfast coupons for partner restaurants",
     localImage: imgDafengHotel,
-    navDest: "Dafeng Hotel, Alishan National Park, Taiwan",
+    mapsUrl: "https://maps.app.goo.gl/yXaojBM59hBibdjc6",
   },
   {
     nights: 2, days: "Days 5–6",
     name: "Maison de Chine Hotel", nameZh: "吾居吾宿",
     location: "Chiayi City",
-    address: "Chiayi City, Taiwan",
     checkIn: "15:00", checkOut: "11:00",
     parking: "Hotel lot",
     features: ["Central Chiayi location", "Close to night markets", "Modern amenities", "Rooftop views"],
+    breakfast: null,
     localImage: imgMaisonHotel,
-    navDest: "Maison de Chine Hotel, Chiayi City, Taiwan",
+    mapsUrl: "https://maps.app.goo.gl/k2na6eu79D9FaUhA8",
   },
   {
     nights: 1, days: "Day 7",
     name: "Darlon Hotel", nameZh: "達龍大飯店",
     location: "Hsinchu City",
-    address: "Hsinchu City, Taiwan",
     checkIn: "15:00", checkOut: "10:00",
     parking: "Hotel lot",
-    features: ["Near Nanliao Harbor", "Easy TPE airport access", "Business facilities", "City centre location"],
+    features: ["Near Nanliao Harbor", "Easy TPE airport access", "City centre location"],
+    breakfast: "Breakfast included",
     localImage: imgDarlonHotel,
-    navDest: "Darlon Hotel, Hsinchu City, Taiwan",
+    mapsUrl: "https://maps.app.goo.gl/G3WKhXw5Rt9o9E8D7",
+  },
+];
+
+interface SouvenirItem {
+  name: string; nameZh: string; description: string; where: string; imgSrc: string;
+}
+interface SouvenirLocation {
+  id: string; label: string; labelZh: string;
+  color: "blue" | "green" | "orange" | "grey"; accent: string; items: SouvenirItem[];
+}
+
+const SOUVENIRS: SouvenirLocation[] = [
+  {
+    id: "sml", label: "Sun Moon Lake", labelZh: "日月潭", color: "blue", accent: "#1A6FA0",
+    items: [
+      { name: "Sun Moon Lake Red Tea", nameZh: "日月潭紅茶", description: "Grown at 750 m altitude in Nantou, this ruby-red tea has a floral sweetness with no bitterness — Taiwan's most prized red tea variety.", where: "Pier-side tea shops & Ita Thao Village", imgSrc: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSh6ddw89LJNJ2bRpPeU7IA4jC39SQouduuZJAslzXzXQ&s=10" },
+      { name: "Sun Moon Lake Millet Wine", nameZh: "小米酒", description: "Sweet traditional millet wine bottled by the indigenous Thao community — lightly fermented, gently fruity, and steeped in centuries of tribal ceremony.", where: "Ita Thao Village market stalls", imgSrc: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLm29FPnhUm3I7dhjmLu_2FV5ZNxV47RW21ANcPhKNcQ&s=10" },
+      { name: "Handmade Mochi", nameZh: "手工麻糬", description: "Sun Moon Lake mochi is famous throughout Taiwan — filled with red bean, peanut, or sesame and dusted in flour. Freshly made daily.", where: "Shuishe pier shops & Ita Thao", imgSrc: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQo6ClXwIEp78iMNHyprrMr4WlcDjjec1vNF0uBr9DhQw&s=10" },
+    ]
+  },
+  {
+    id: "alishan", label: "Alishan", labelZh: "阿里山", color: "green", accent: "#2E7D52",
+    items: [
+      { name: "Alishan High-Mountain Oolong", nameZh: "阿里山高山茶", description: "Grown at 1,000–2,000 m in misty mountain air, this world-famous oolong has a buttery floral finish and no astringency — buy directly from growers.", where: "Alishan village tea houses & hillside farms", imgSrc: img("1602130783992-6209cae2c589", 600, 450) },
+      { name: "Alishan Single Drip Coffee", nameZh: "阿里山手沖咖啡", description: "Shade-grown arabica at 1,200–1,500 m brewed single-cup pour-over style. Low acidity, sweet nutty finish — Taiwan's finest mountain coffee experience.", where: "YUYUPAS Village & Alishan village cafés", imgSrc: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVS2F9a4IdEvjCngRuQP0rTzguVN5EHLwgxsoF8igCvw&s=10" },
+      { name: "Red Cypress Essential Oil", nameZh: "阿里山紅檜精油", description: "Distilled from Alishan's sacred red cypress (紅檜), this forest-fresh essential oil is treasured for its calming aroma and is unique to the Alishan highlands.", where: "Alishan village artisan & wellness shops", imgSrc: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR52ilXoBGEHaSAuKScd5LhVL-L-DP58URcdFJOomMUbQ&s=10" },
+    ]
   },
 ];
 
@@ -230,6 +257,7 @@ const NAV_ITEMS = [
   { id: "attractions", label: "Attractions", Icon: Eye },
   { id: "food", label: "Food", Icon: Utensils },
   { id: "hotels", label: "Hotels", Icon: Bed },
+  { id: "souvenirs", label: "Souvenirs", Icon: ShoppingBag },
 ];
 
 // ─── tiny reusable components ─────────────────────────────────────────────────
@@ -919,6 +947,10 @@ function HotelsSection() {
                   {h.parking}
                 </div>
               </div>
+              <div className={`flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-medium ${h.breakfast ? "bg-[#E6F4ED] text-[#1A4D30]" : "bg-muted text-muted-foreground"}`}>
+                <span>{h.breakfast ? "🍳" : "☕"}</span>
+                {h.breakfast ? h.breakfast : "Breakfast not included"}
+              </div>
               <div className="pt-2 border-t border-border">
                 <p className="text-xs font-semibold text-foreground mb-1.5">Highlights</p>
                 <div className="space-y-1">
@@ -929,15 +961,101 @@ function HotelsSection() {
                   ))}
                 </div>
               </div>
-              <a href={`https://www.google.com/maps/dir/?api=1&origin=My+Location&destination=${encodeURIComponent(h.navDest)}`}
-                target="_blank" rel="noopener noreferrer"
-                className="flex items-center gap-1.5 text-xs font-medium bg-secondary text-foreground px-3 py-1.5 rounded-lg hover:bg-muted transition-colors border border-border w-full justify-center mt-1">
-                <ExternalLink size={11} /> Navigate to {h.name}
+              <a href={h.mapsUrl} target="_blank" rel="noopener noreferrer"
+                className="flex items-center gap-1.5 text-xs font-medium bg-[#1A6FA0] text-white px-3 py-1.5 rounded-lg hover:bg-[#155d8a] transition-colors w-full justify-center mt-1">
+                <Navigation size={11} /> Open in Google Maps
               </a>
             </div>
           </motion.div>
         ))}
       </div>
+    </section>
+  );
+}
+
+// ─── SouvenirsSection ─────────────────────────────────────────────────────────
+
+function SouvenirsSection() {
+  const [activeId, setActiveId] = useState<string>("sml");
+  const active = SOUVENIRS.find(s => s.id === activeId)!;
+  const tabColors: Record<string, string> = {
+    blue: "bg-[#1A6FA0] text-white",
+    green: "bg-[#2E7D52] text-white",
+    orange: "bg-[#F4841F] text-white",
+    grey: "bg-[#3A5068] text-white",
+  };
+  const tabIdle: Record<string, string> = {
+    blue: "text-[#1A6FA0] hover:bg-[#E8F0F7]",
+    green: "text-[#2E7D52] hover:bg-[#E6F4ED]",
+    orange: "text-[#F4841F] hover:bg-[#FEF0E6]",
+    grey: "text-[#5C7285] hover:bg-muted",
+  };
+
+  return (
+    <section id="souvenirs" className="py-20 px-4 md:px-8 max-w-6xl mx-auto">
+      <div className="mb-10 text-center">
+        <Badge color="green">What to Bring Home</Badge>
+        <h2 className="text-3xl md:text-5xl font-bold text-foreground mt-3 mb-3" style={SERIF}>Local Specialities</h2>
+        <p className="text-muted-foreground max-w-lg mx-auto">Unique products and souvenirs found only at each destination — curated for the journey.</p>
+      </div>
+
+      {/* Location tabs */}
+      <div className="flex items-center gap-2 justify-center flex-wrap mb-10">
+        {SOUVENIRS.map(loc => (
+          <button
+            key={loc.id}
+            onClick={() => setActiveId(loc.id)}
+            className={`px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-200 ${activeId === loc.id ? tabColors[loc.color] : `bg-card border border-border ${tabIdle[loc.color]}`}`}
+          >
+            {loc.label}
+            <span className="ml-1.5 opacity-60 text-xs font-normal">{loc.labelZh}</span>
+          </button>
+        ))}
+      </div>
+
+      {/* Product grid */}
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={active.id}
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -8 }}
+          transition={{ duration: 0.25 }}
+          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5"
+        >
+          {active.items.map((item, i) => (
+            <motion.div
+              key={item.name}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, delay: i * 0.07 }}
+              whileHover={{ y: -4 }}
+              className="bg-card rounded-2xl border border-border shadow-sm overflow-hidden group"
+            >
+              <div className="relative h-44 overflow-hidden bg-muted">
+                <img
+                  src={item.imgSrc}
+                  alt={item.name}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+                <div className="absolute bottom-2.5 left-3 right-3">
+                  <p className="text-white/60 text-xs font-medium">{item.nameZh}</p>
+                </div>
+              </div>
+              <div className="p-4 space-y-2.5">
+                <h4 className="font-bold text-foreground text-sm leading-snug" style={SERIF}>{item.name}</h4>
+                <p className="text-xs text-muted-foreground leading-relaxed">{item.description}</p>
+                <div className="pt-2 border-t border-border flex items-start gap-1.5">
+                  <MapPin size={10} className="flex-shrink-0 mt-0.5" style={{ color: active.accent }} />
+                  <span className="text-xs text-muted-foreground">{item.where}</span>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+      </AnimatePresence>
     </section>
   );
 }
@@ -1014,6 +1132,7 @@ export default function App() {
         <AttractionsSection />
         <FoodSection />
         <HotelsSection />
+        <SouvenirsSection />
         <Footer />
       </main>
     </div>
