@@ -20,6 +20,10 @@ import imgDay5 from "@/imports/day_5_-_Fenqihu_Old_Street.jpg";
 import imgDay6 from "@/imports/day_6_-_chiayi_city.jpg";
 import imgDay7 from "@/imports/day_7_-_Nanliao_Harbor_Seafood.jpg";
 import imgDay8 from "@/imports/day_8_-_last_day.jpg";
+import imgFuliHotel from "@/imports/fuli_hot_spring_resort_sunmoonlake.jpg";
+import imgDafengHotel from "@/imports/dafeng_hotel_alishan_park.jpg";
+import imgMaisonHotel from "@/imports/maison_de_chine_hotel_chiayi_city.jpg";
+import imgDarlonHotel from "@/imports/darlon_hotel_hsinchu_city.jpg";
 import { motion, AnimatePresence } from "motion/react";
 import {
   ChevronDown, ChevronUp, MapPin, Clock, Car, ExternalLink,
@@ -173,10 +177,50 @@ const FOODS = [
 ];
 
 const HOTELS = [
-  { nights: 2, location: "Sun Moon Lake", checkIn: "15:00", checkOut: "11:00", image: "1650446781402-bc6d1a21a868", recommended: "Lalu Sun Moon Lake · Fleur de Chine · Sun Moon Lake Hotel", parking: "Included", tip: "Lakefront rooms sell out months ahead. Book ASAP.", days: "Days 1–2" },
-  { nights: 2, location: "Alishan National Park", checkIn: "14:00", checkOut: "10:00", image: "1603416547763-c637d96f5fef", recommended: "Dafong Hotel 大豐山莊 (preferred) · Alishan House", parking: "Limited inside park", tip: "Only a handful of hotels inside the park. Book 3–6 months ahead.", days: "Days 3–4" },
-  { nights: 2, location: "Chiayi City", checkIn: "15:00", checkOut: "11:00", image: "1698567045771-a22c872c26fa", recommended: "Howard Johnson Chiayi · Minn Hotel · Royal Hotel", parking: "Hotel lot or nearby", tip: "Plenty of options close to the night market.", days: "Days 5–6" },
-  { nights: 1, location: "Hsinchu (Nanliao area)", checkIn: "15:00", checkOut: "10:00", image: "1661262745110-c79b38317c5f", recommended: "Sheraton Hsinchu · Ambassador Hotel Hsinchu", parking: "Hotel lot", tip: "Easy drive to TPE Airport next morning (~45 min).", days: "Day 7" },
+  {
+    nights: 2, days: "Days 1–2",
+    name: "Fuli Hot Spring Resort", nameZh: "馥麗溫泉大飯店",
+    location: "Sun Moon Lake, Nantou County",
+    address: "No. 21, Zhongzheng Rd, Yuchi Township, Nantou County",
+    checkIn: "15:00", checkOut: "11:00",
+    parking: "Included — hotel lot",
+    features: ["Private hot spring baths", "Lakefront views", "Restaurant on-site", "Spa & wellness"],
+    localImage: imgFuliHotel,
+    navDest: "Fuli Hot Spring Resort, Sun Moon Lake, Taiwan",
+  },
+  {
+    nights: 2, days: "Days 3–4",
+    name: "Dafeng Hotel", nameZh: "大豐山莊",
+    location: "Alishan National Park, Chiayi County",
+    address: "Alishan Township, Chiayi County (inside the national park)",
+    checkIn: "14:00", checkOut: "10:00",
+    parking: "Limited — inside park",
+    features: ["Inside Alishan National Park", "Walking distance to forest trains", "Mountain views", "Early sunrise access"],
+    localImage: imgDafengHotel,
+    navDest: "Dafeng Hotel, Alishan National Park, Taiwan",
+  },
+  {
+    nights: 2, days: "Days 5–6",
+    name: "Maison de Chine Hotel", nameZh: "吾居吾宿",
+    location: "Chiayi City",
+    address: "Chiayi City, Taiwan",
+    checkIn: "15:00", checkOut: "11:00",
+    parking: "Hotel lot",
+    features: ["Central Chiayi location", "Close to night markets", "Modern amenities", "Rooftop views"],
+    localImage: imgMaisonHotel,
+    navDest: "Maison de Chine Hotel, Chiayi City, Taiwan",
+  },
+  {
+    nights: 1, days: "Day 7",
+    name: "Darlon Hotel", nameZh: "達龍大飯店",
+    location: "Hsinchu City",
+    address: "Hsinchu City, Taiwan",
+    checkIn: "15:00", checkOut: "10:00",
+    parking: "Hotel lot",
+    features: ["Near Nanliao Harbor", "Easy TPE airport access", "Business facilities", "City centre location"],
+    localImage: imgDarlonHotel,
+    navDest: "Darlon Hotel, Hsinchu City, Taiwan",
+  },
 ];
 
 const NAV_ITEMS = [
@@ -840,47 +884,56 @@ function HotelsSection() {
       <div className="mb-12 text-center">
         <Badge color="blue">Accommodation</Badge>
         <h2 className="text-3xl md:text-5xl font-bold text-foreground mt-3 mb-3" style={SERIF}>Where We Stay</h2>
-        <p className="text-muted-foreground max-w-lg mx-auto">Hotels are yet to be confirmed — bookings TBC. Recommendations included for each stop.</p>
-        <div className="inline-flex items-center gap-2 bg-[#FEF0E6] text-[#7A3E00] text-sm font-medium px-4 py-2 rounded-xl mt-3">
-          <Building2 size={15} /> {"All hotels are TBC — confirm bookings before the trip"}
-        </div>
+        <p className="text-muted-foreground max-w-lg mx-auto">Four confirmed hotels across the journey — each chosen for location, comfort, and access.</p>
       </div>
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
         {HOTELS.map((h) => (
-          <motion.div key={h.location} whileHover={{ y: -3 }} transition={{ duration: 0.2 }}
-            className="bg-card rounded-2xl border border-border shadow-sm overflow-hidden">
-            <div className="relative h-40 bg-[#1A2B3C] overflow-hidden">
-              <img src={img(h.image, 500, 300)} alt={h.location} className="w-full h-full object-cover opacity-60" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
+          <motion.div key={h.name} whileHover={{ y: -3 }} transition={{ duration: 0.2 }}
+            className="bg-card rounded-2xl border border-border shadow-sm overflow-hidden group">
+            <div className="relative h-44 bg-[#1A2B3C] overflow-hidden">
+              <ImageWithFallback src={h.localImage} alt={h.name}
+                className="w-full h-full object-cover opacity-80 group-hover:opacity-90 group-hover:scale-105 transition-all duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
               <div className="absolute bottom-3 left-3 right-3">
-                <div className="flex items-center justify-between">
-                  <Badge color="orange">TBC</Badge>
+                <div className="flex items-center justify-between mb-1">
+                  <Badge color="blue">{h.days}</Badge>
                   <span className="text-white/70 text-xs">{h.nights} {h.nights === 1 ? "night" : "nights"}</span>
                 </div>
-                <h3 className="text-white font-bold mt-1 text-sm" style={SERIF}>{h.location}</h3>
+                <h3 className="text-white font-bold text-sm leading-tight" style={SERIF}>{h.name}</h3>
+                <p className="text-white/60 text-xs">{h.nameZh}</p>
               </div>
             </div>
-            <div className="p-4">
-              <Badge color="grey">{h.days}</Badge>
-              <div className="mt-3 space-y-2 text-xs">
+            <div className="p-4 space-y-3">
+              <div className="flex items-start gap-1.5 text-xs text-muted-foreground">
+                <MapPin size={11} className="text-[#1A6FA0] mt-0.5 flex-shrink-0" />
+                <span>{h.location}</span>
+              </div>
+              <div className="space-y-1.5 text-xs">
                 <div className="flex items-center gap-1.5 text-muted-foreground">
                   <Clock size={11} className="text-[#1A6FA0]" />
                   Check-in {h.checkIn} · Check-out {h.checkOut}
                 </div>
                 <div className="flex items-center gap-1.5 text-muted-foreground">
                   <Car size={11} className="text-[#1A6FA0]" />
-                  Parking: {h.parking}
+                  {h.parking}
                 </div>
               </div>
-              <div className="mt-3 pt-3 border-t border-border">
-                <p className="text-xs font-semibold text-foreground mb-1">Recommended options:</p>
-                <p className="text-xs text-muted-foreground leading-relaxed">{h.recommended}</p>
+              <div className="pt-2 border-t border-border">
+                <p className="text-xs font-semibold text-foreground mb-1.5">Highlights</p>
+                <div className="space-y-1">
+                  {h.features.map(f => (
+                    <div key={f} className="flex items-center gap-1.5 text-xs text-muted-foreground">
+                      <span className="text-[#2E7D52]">✓</span> {f}
+                    </div>
+                  ))}
+                </div>
               </div>
-              <div className="mt-3 bg-[#FEF0E6] rounded-xl p-2.5 text-xs text-[#7A3E00]">
-                💡 {h.tip}
-              </div>
-              <GMapsButtons navDest={`Hotel in ${h.location} Taiwan`} />
+              <a href={`https://www.google.com/maps/dir/?api=1&origin=My+Location&destination=${encodeURIComponent(h.navDest)}`}
+                target="_blank" rel="noopener noreferrer"
+                className="flex items-center gap-1.5 text-xs font-medium bg-secondary text-foreground px-3 py-1.5 rounded-lg hover:bg-muted transition-colors border border-border w-full justify-center mt-1">
+                <ExternalLink size={11} /> Navigate to {h.name}
+              </a>
             </div>
           </motion.div>
         ))}
