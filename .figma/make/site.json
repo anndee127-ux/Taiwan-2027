@@ -1,0 +1,11 @@
+{
+  "title": "nd_taiwan_2027",
+  "description": "Streamline task management and enhance productivity with an intuitive interface designed for teams to collaborate and track progress effortlessly.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
